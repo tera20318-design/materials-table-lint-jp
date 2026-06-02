@@ -1,7 +1,7 @@
-# project=Al tensile screening
-# operator=Suzuki
+# project=Synthetic tensile screening
+# operator=Example Operator
 # date=2026-06-02
 # test_method=synthetic room temperature tensile example
 試料ID,試験片No,材質,標点間距離[mm],耐力[MPa],引張強さ[MPa],破断伸び[%],破断位置,備考
-T-001,1,A6061,50,245,310,12.5,中央,
-T-002,2,A6061,50,250,318,13.1,中央,合成データ
+SYN-T-001,1,SYN-MAT,50,245,310,12.5,中央,合成データ
+SYN-T-002,2,SYN-MAT,50,250,318,13.1,中央,合成データ

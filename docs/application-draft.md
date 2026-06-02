@@ -10,6 +10,20 @@ Character count: 426
 
 この申請文は、実績を盛らずに「日本語材料実験テーブルを再利用しやすくする小さなOSS」として説明するためのものです。既存のpymatgen、matminer、NOMAD、ELN系OSSと競うのではなく、その前段でExcel/CSVの表記ゆれを検査・正規化する薄い層として位置づけます。
 
+## Field-Specific Drafts
+
+### Repository Qualification
+
+materials-table-lint-jp is a new OSS Python CLI for Japanese materials experiment tables. It checks simple CSV/XLSX files against explicit schemas for aliases, units, metadata, missing values, duplicate IDs, numeric parsing, and ranges. The repo includes synthetic examples, tests, GitHub Actions CI, governance, security notes, release notes, and a public roadmap. It has no adoption metrics yet.
+
+### API Credit Use
+
+The CLI does not require the OpenAI API at runtime. I would use API credits for OSS maintenance: Codex-assisted issue triage, pull request review, release-note drafting, documentation review, and turning reported CSV/XLSX edge cases into tests while avoiding uploads of private experiment data.
+
+### Additional Note
+
+This is a new public repository with no stars, downloads, or external adoption claims. The examples are synthetic. The project explicitly avoids OCR, LLM extraction, ELN/LIMS replacement, standards-compliance claims, and quality-assurance certification.
+
 ## Fact-Check Checklist
 
 - [x] 新規repoで実績なしと書いているか。

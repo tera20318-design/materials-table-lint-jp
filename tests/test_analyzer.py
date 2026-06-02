@@ -53,13 +53,13 @@ def test_analyze_detects_duplicate_and_missing_values(tmp_path: Path) -> None:
     data.write_text(
         "\n".join(
             [
-                "# project=Demo",
-                "# operator=Tanaka",
+                "# project=Synthetic demo",
+                "# operator=Example Operator",
                 "# date=2026-06-01",
                 "試料ID,温度[℃],保持時間[min]",
-                "A-001,520,60",
-                "A-002,520,",
-                "A-002,540,30",
+                "SYN-001,520,60",
+                "SYN-002,520,",
+                "SYN-002,540,30",
             ]
         ),
         encoding="utf-8",
@@ -71,12 +71,12 @@ def test_analyze_detects_duplicate_and_missing_values(tmp_path: Path) -> None:
     assert "DUPLICATE_SAMPLE_ID" in codes
     assert "MISSING_VALUE" not in codes
     assert analysis.matches["temperature"].output == "temperature_degC"
-    assert analysis.normalized_rows[0]["sample_id"] == "A-001"
+    assert analysis.normalized_rows[0]["sample_id"] == "SYN-001"
 
 
 def test_required_metadata_and_range_errors(tmp_path: Path) -> None:
     data = tmp_path / "data.csv"
-    data.write_text("試料ID,温度[℃]\nA-001,2500\n", encoding="utf-8")
+    data.write_text("試料ID,温度[℃]\nSYN-001,2500\n", encoding="utf-8")
 
     analysis = analyze(read_table(data), load_schema(write_schema(tmp_path)))
     codes = [issue.code for issue in analysis.issues]
@@ -89,7 +89,11 @@ def test_required_metadata_and_range_errors(tmp_path: Path) -> None:
 def test_numeric_parse_error(tmp_path: Path) -> None:
     data = tmp_path / "data.csv"
     data.write_text(
-        "# project=Demo\n# operator=Tanaka\n# date=2026-06-01\n試料ID,温度[℃]\nA-001,high\n",
+        "# project=Synthetic demo\n"
+        "# operator=Example Operator\n"
+        "# date=2026-06-01\n"
+        "試料ID,温度[℃]\n"
+        "SYN-001,high\n",
         encoding="utf-8",
     )
 
@@ -103,11 +107,11 @@ def test_duplicate_mapped_column_is_error(tmp_path: Path) -> None:
     data.write_text(
         "\n".join(
             [
-                "# project=Demo",
-                "# operator=Tanaka",
+                "# project=Synthetic demo",
+                "# operator=Example Operator",
                 "# date=2026-06-01",
                 "試料ID,サンプルID,温度[℃]",
-                "A-001,B-001,500",
+                "SYN-001,SYN-B-001,500",
             ]
         ),
         encoding="utf-8",
@@ -117,4 +121,4 @@ def test_duplicate_mapped_column_is_error(tmp_path: Path) -> None:
 
     assert any(issue.code == "DUPLICATE_MAPPED_COLUMN" for issue in analysis.issues)
     assert analysis.status == "error"
-    assert analysis.normalized_rows[0]["sample_id"] == "A-001"
+    assert analysis.normalized_rows[0]["sample_id"] == "SYN-001"

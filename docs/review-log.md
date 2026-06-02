@@ -11,7 +11,7 @@ The selected B+D direction combines:
 - Materials experiment Excel/CSV normalization and linting.
 - Materials experiment metadata templates and validation.
 
-This was chosen because it is more directly useful for materials-technology work than a general AI/CLI environment doctor, while still being small enough for a weekend MVP.
+This was chosen because it is more directly useful for materials-technology work than a general AI/CLI environment doctor, while still being small enough for a small initial release.
 
 ### Scope Guardrails
 

@@ -36,11 +36,11 @@ def test_cli_init_and_lint_clean_sample(tmp_path: Path, capsys) -> None:
     data.write_text(
         "\n".join(
             [
-                "# project=Al",
-                "# operator=Tanaka",
+                "# project=Synthetic example",
+                "# operator=Example Operator",
                 "# date=2026-06-01",
                 "試料ID,温度[℃],保持時間[min],引張強さ[MPa],破断伸び[%],備考",
-                "A-001,520,60,310,12.5,",
+                "SYN-001,520,60,310,12.5,",
             ]
         ),
         encoding="utf-8",
@@ -59,12 +59,12 @@ def test_cli_init_template_and_lint_tensile_sample(tmp_path: Path) -> None:
     data.write_text(
         "\n".join(
             [
-                "# project=Al tensile screening",
-                "# operator=Suzuki",
+                "# project=Synthetic tensile screening",
+                "# operator=Example Operator",
                 "# date=2026-06-02",
                 "# test_method=room temperature tensile test",
                 "試料ID,試験片No,材質,標点間距離[mm],耐力[MPa],引張強さ[MPa],破断伸び[%],破断位置,備考",
-                "T-001,1,A6061,50,245,310,12.5,中央,",
+                "SYN-T-001,1,SYN-MAT,50,245,310,12.5,中央,",
             ]
         ),
         encoding="utf-8",
@@ -107,11 +107,11 @@ def test_cli_normalize_writes_outputs(tmp_path: Path) -> None:
     data.write_text(
         "\n".join(
             [
-                "# project=Al",
-                "# operator=Tanaka",
+                "# project=Synthetic example",
+                "# operator=Example Operator",
                 "# date=2026-06-01",
                 "試料ID,温度[℃],保持時間[min]",
-                "A-001,520,60",
+                "SYN-001,520,60",
             ]
         ),
         encoding="utf-8",

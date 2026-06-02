@@ -6,6 +6,8 @@
 
 このプロジェクトは新しいOSSです。stars、downloads、外部採用事例などの実績はまだありません。
 
+English summary: `materials-table-lint-jp` is a small Python CLI for checking and normalizing simple Japanese materials experiment CSV/XLSX tables before analysis or sharing. It is not an ELN/LIMS, materials database, OCR tool, AI extraction tool, standards-compliance checker, or quality-assurance certification system. This is a new OSS project and does not claim adoption metrics.
+
 ## What It Does
 
 - CSVを標準ライブラリだけで読み込みます。
@@ -100,13 +102,13 @@ mtlint lint examples/sample.csv --schema examples/basic.schema.json
 ## Example Input
 
 ```csv
-# project=Al合金熱処理
-# operator=Tanaka
+# project=Synthetic heat treatment example
+# operator=Example Operator
 # date=2026-06-01
 試料ID,温度[℃],保持時間[min],引張強さ[MPa],破断伸び[%],備考
-A-001,520,60,310,12.5,
-A-002,520,,305,,
-A-002,540,30,,10.1,再測定予定
+SYN-001,520,60,310,12.5,
+SYN-002,520,,305,,
+SYN-002,540,30,,10.1,再測定予定
 ```
 
 ## Example Issues

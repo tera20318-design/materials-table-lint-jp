@@ -10,8 +10,9 @@ Please open a GitHub issue with a minimal reproduction unless the report include
 sensitive information. Do not paste real experiment data, customer names, lot
 numbers, internal material codes, or confidential measurements.
 
-Use GitHub private vulnerability reporting if it is enabled. If not, open a minimal
-public issue that does not include sensitive details and ask for a private contact path.
+Use GitHub private vulnerability reporting for vulnerability reports or reports
+that require sensitive reproduction details. For non-sensitive questions, open a
+minimal public issue that does not include private experiment data.
 
 ## Security Notes
 
@@ -19,6 +20,8 @@ public issue that does not include sensitive details and ask for a private conta
 - It does not send telemetry.
 - It does not upload data to external services.
 - It does not perform network calls by default.
+- GitHub private vulnerability reporting is enabled for this repository.
+- Dependabot security alerts and security updates are enabled for this repository.
 - Redaction is not part of current releases. Review reports and normalized files before sharing.
 - JSON reports can include raw metadata values, column names, issue values, and input paths.
 - The tool is a data-quality aid, not a regulated quality assurance decision system.

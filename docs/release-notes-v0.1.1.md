@@ -20,6 +20,12 @@ Passed locally on 2026-06-02:
 - `python -m build`
 - `python -m twine check dist/*`
 
+Public verification:
+
+- Tag: `v0.1.1`
+- Release commit: `99b9270`
+- GitHub Actions tag CI: https://github.com/tera20318-design/materials-table-lint-jp/actions/runs/26811813248
+
 ## Notes
 
 This is still a new project. It does not yet have public adoption metrics, downloads, or external usage examples.

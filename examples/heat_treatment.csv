@@ -1,7 +1,7 @@
-# project=Al heat treatment screening
-# operator=Tanaka
+# project=Synthetic heat treatment screening
+# operator=Example Operator
 # date=2026-06-02
 # method=synthetic solution treatment and aging example
 試料ID,材質,ロット,溶体化温度[℃],保持時間[min],時効温度[℃],冷却条件,硬さ[HV],備考
-HT-001,A6061,L-001,530,60,175,水冷,108,
-HT-002,A6061,L-001,540,45,175,水冷,112,合成データ
+SYN-HT-001,SYN-MAT,SYN-LOT-001,530,60,175,水冷,108,合成データ
+SYN-HT-002,SYN-MAT,SYN-LOT-001,540,45,175,水冷,112,合成データ

@@ -1,4 +1,4 @@
-blank_issues_enabled: true
+blank_issues_enabled: false
 contact_links:
   - name: Security and private data
     url: https://github.com/tera20318-design/materials-table-lint-jp/blob/main/SECURITY.md
