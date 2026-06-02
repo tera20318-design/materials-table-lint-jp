@@ -128,6 +128,8 @@ A-002,540,30,,10.1,再測定予定
 
 `materials-table-lint-jp` は、pandasなどの解析ライブラリや汎用データ検証フレームワークの代替ではありません。目的は、解析前の小さなCLIステップとして、日本語の材料実験表にありがちな列名ゆれ、単位表記、メタデータ不足を明示スキーマで確認することです。
 
+詳しい位置づけは [docs/comparison.md](docs/comparison.md) に分離しています。
+
 ## Exit Codes
 
 - `0`: errors がなく、warnings のみまたは問題なし。
@@ -156,6 +158,8 @@ python -m twine check dist/*
 ## Roadmap
 
 今後の候補は [docs/roadmap.md](docs/roadmap.md) に分離しています。READMEには現在動く機能だけを書きます。
+
+Codex/API credits を使う場合の保守計画は [docs/codex-maintenance-plan.md](docs/codex-maintenance-plan.md) にまとめています。これは実行時機能ではなく、OSSメンテナンス用途の説明です。
 
 ## License
 
