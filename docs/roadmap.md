@@ -4,7 +4,7 @@ This roadmap lists possible future work. It is not a promise that these features
 
 ## v0.1.x
 
-- Add more schema templates for tensile tests, heat treatment, XRD, and coating tests.
+- Add more schema templates for XRD and coating tests.
 - Add more Japanese alias dictionaries for common materials experiment columns.
 - Add optional schema warnings for suspicious unit combinations.
 - Add Markdown report output for support requests.

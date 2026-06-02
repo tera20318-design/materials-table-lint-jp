@@ -4,6 +4,8 @@ from typing import Any
 from materials_table_lint_jp import cli
 from materials_table_lint_jp.cli import main
 
+REPO_ROOT = Path(__file__).resolve().parents[1]
+
 
 class FakeTextStream:
     def __init__(self) -> None:
@@ -47,6 +49,55 @@ def test_cli_init_and_lint_clean_sample(tmp_path: Path, capsys) -> None:
     assert main(["lint", str(data), "--schema", str(schema)]) == 0
     output = capsys.readouterr().out
     assert "Status: ok" in output
+
+
+def test_cli_init_template_and_lint_tensile_sample(tmp_path: Path) -> None:
+    schema = tmp_path / "tensile.schema.json"
+    assert main(["init", "--template", "tensile-test", "--out", str(schema)]) == 0
+
+    data = tmp_path / "tensile.csv"
+    data.write_text(
+        "\n".join(
+            [
+                "# project=Al tensile screening",
+                "# operator=Suzuki",
+                "# date=2026-06-02",
+                "# test_method=room temperature tensile test",
+                "試料ID,試験片No,材質,標点間距離[mm],耐力[MPa],引張強さ[MPa],破断伸び[%],破断位置,備考",
+                "T-001,1,A6061,50,245,310,12.5,中央,",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    assert main(["lint", str(data), "--schema", str(schema)]) == 0
+
+
+def test_material_examples_lint_cleanly() -> None:
+    examples = REPO_ROOT / "examples"
+
+    assert (
+        main(
+            [
+                "lint",
+                str(examples / "heat_treatment.csv"),
+                "--schema",
+                str(examples / "heat_treatment.schema.json"),
+            ]
+        )
+        == 0
+    )
+    assert (
+        main(
+            [
+                "lint",
+                str(examples / "tensile_test.csv"),
+                "--schema",
+                str(examples / "tensile_test.schema.json"),
+            ]
+        )
+        == 0
+    )
 
 
 def test_cli_normalize_writes_outputs(tmp_path: Path) -> None:

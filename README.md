@@ -49,16 +49,32 @@ python -m pip install -e ".[dev,xlsx]"
 
 ## Quick Start
 
-スキーマを生成:
+basicスキーマを生成:
 
 ```bash
 mtlint init --out schema.json
 ```
 
+材料実験向けテンプレートを指定して生成:
+
+```bash
+mtlint init --template heat-treatment --out heat_treatment.schema.json
+mtlint init --template tensile-test --out tensile_test.schema.json
+```
+
+以降の `examples/...` を使うコマンドは、GitHubからcloneしたリポジトリ内で実行する例です。
+
 正常なサンプルCSVを検査:
 
 ```bash
 mtlint lint examples/clean.csv --schema examples/basic.schema.json
+```
+
+熱処理サンプルと引張試験サンプルを検査:
+
+```bash
+mtlint lint examples/heat_treatment.csv --schema examples/heat_treatment.schema.json
+mtlint lint examples/tensile_test.csv --schema examples/tensile_test.schema.json
 ```
 
 正規化CSVとJSONレポートを出力:
@@ -100,12 +116,17 @@ A-002,540,30,,10.1,再測定予定
 - `MISSING_METADATA`
 - `MISSING_REQUIRED_COLUMN`
 - `UNIT_MISMATCH`
+- `MISSING_UNIT`
 - `MISSING_VALUE`
 - `DUPLICATE_SAMPLE_ID`
 - `DUPLICATE_MAPPED_COLUMN`
 - `NUMERIC_PARSE_ERROR`
 - `RANGE_VIOLATION`
 - `UNKNOWN_COLUMN`
+
+## Positioning
+
+`materials-table-lint-jp` は、pandasなどの解析ライブラリや汎用データ検証フレームワークの代替ではありません。目的は、解析前の小さなCLIステップとして、日本語の材料実験表にありがちな列名ゆれ、単位表記、メタデータ不足を明示スキーマで確認することです。
 
 ## Exit Codes
 

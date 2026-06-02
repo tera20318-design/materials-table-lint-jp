@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "metadata": {
+    "required": [
+      "project",
+      "operator",
+      "date",
+      "test_method"
+    ]
+  },
+  "columns": {
+    "sample_id": {
+      "required": true,
+      "aliases": [
+        "試料ID",
+        "サンプルID",
+        "Sample ID",
+        "sample id"
+      ],
+      "type": "string",
+      "unique": true
+    },
+    "specimen_no": {
+      "aliases": [
+        "試験片No",
+        "試験片番号",
+        "specimen no"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "material_grade": {
+      "aliases": [
+        "材質",
+        "材料",
+        "合金",
+        "material",
+        "material grade"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "gauge_length": {
+      "aliases": [
+        "標点間距離",
+        "ゲージ長",
+        "gauge length"
+      ],
+      "unit": "mm",
+      "accepted_units": [
+        "mm"
+      ],
+      "type": "float",
+      "nullable": true,
+      "range": [
+        0,
+        1000
+      ]
+    },
+    "yield_strength": {
+      "aliases": [
+        "降伏応力",
+        "耐力",
+        "yield strength"
+      ],
+      "unit": "MPa",
+      "accepted_units": [
+        "MPa"
+      ],
+      "type": "float",
+      "nullable": true,
+      "range": [
+        0,
+        10000
+      ]
+    },
+    "tensile_strength": {
+      "required": true,
+      "aliases": [
+        "引張強さ",
+        "引張強度",
+        "tensile strength"
+      ],
+      "unit": "MPa",
+      "accepted_units": [
+        "MPa"
+      ],
+      "type": "float",
+      "range": [
+        0,
+        10000
+      ]
+    },
+    "elongation": {
+      "aliases": [
+        "破断伸び",
+        "伸び",
+        "elongation"
+      ],
+      "unit": "percent",
+      "accepted_units": [
+        "%",
+        "percent"
+      ],
+      "type": "float",
+      "nullable": true,
+      "range": [
+        0,
+        1000
+      ]
+    },
+    "fracture_location": {
+      "aliases": [
+        "破断位置",
+        "fracture location"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "note": {
+      "aliases": [
+        "備考",
+        "メモ",
+        "note"
+      ],
+      "type": "string",
+      "nullable": true
+    }
+  }
+}

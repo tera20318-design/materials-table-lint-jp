@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1] - 2026-06-02
+
+### Added
+
+- `mtlint init --template` with `basic`, `heat-treatment`, and `tensile-test` schema templates.
+- Synthetic heat treatment and tensile test CSV/schema examples.
+- README positioning note to clarify that this CLI complements, rather than replaces, analysis libraries and generic validation frameworks.
+
 ## [0.1.0] - 2026-06-02
 
 ### Added

@@ -33,7 +33,11 @@ jobs:
       - name: CLI smoke
         run: |
           mtlint --version
+          mtlint init --template heat-treatment --out heat_treatment.generated.schema.json
+          mtlint init --template tensile-test --out tensile_test.generated.schema.json
           mtlint lint examples/clean.csv --schema examples/basic.schema.json
+          mtlint lint examples/heat_treatment.csv --schema examples/heat_treatment.schema.json
+          mtlint lint examples/tensile_test.csv --schema examples/tensile_test.schema.json
           mtlint normalize examples/clean.csv --schema examples/basic.schema.json --out normalized.csv --report report.json
       - name: Build
         run: python -m build

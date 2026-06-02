@@ -29,6 +29,7 @@ tool. Keep the scope narrow and practical.
 - Prefer Python standard library for core CSV/JSON behavior.
 - Keep `.xlsx` support optional through `openpyxl`; do not require it for CSV use.
 - Use explicit JSON schema files for MVP. YAML support is out of scope until requested.
+- Keep built-in schema templates small and tied to synthetic examples that lint cleanly.
 - Keep lint issue codes stable and documented.
 - Do not silently infer scientific meaning. Use schema aliases, units, and range rules.
 - Do not include proprietary standards text, real customer data, or confidential examples.
@@ -72,6 +73,7 @@ README must include:
 - Honest project status: new repo, no adoption metrics unless true.
 - What the MVP supports and does not support.
 - Quick start using `examples/sample.csv` and `examples/basic.schema.json`.
+- Built-in template examples for currently implemented `mtlint init --template` choices.
 - `mtlint init`, `inspect`, `lint`, and `normalize` examples.
 - Privacy/security notes for local experiment data.
 - Optional Excel dependency instructions.

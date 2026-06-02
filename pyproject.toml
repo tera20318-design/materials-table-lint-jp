@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "materials-table-lint-jp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Japanese materials experiment table linter and normalizer."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -44,6 +44,9 @@ dev = [
 Homepage = "https://github.com/tera20318-design/materials-table-lint-jp"
 Repository = "https://github.com/tera20318-design/materials-table-lint-jp"
 Issues = "https://github.com/tera20318-design/materials-table-lint-jp/issues"
+Changelog = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/CHANGELOG.md"
+Security = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/SECURITY.md"
+"Release Notes" = "https://github.com/tera20318-design/materials-table-lint-jp/tree/main/docs"
 
 [project.scripts]
 mtlint = "materials_table_lint_jp.cli:main"

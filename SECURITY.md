@@ -19,5 +19,6 @@ public issue that does not include sensitive details and ask for a private conta
 - It does not send telemetry.
 - It does not upload data to external services.
 - It does not perform network calls by default.
-- Redaction is not part of v0.1.0. Review reports and normalized files before sharing.
+- Redaction is not part of current releases. Review reports and normalized files before sharing.
+- JSON reports can include raw metadata values, column names, issue values, and input paths.
 - The tool is a data-quality aid, not a regulated quality assurance decision system.

@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "metadata": {
+    "required": [
+      "project",
+      "operator",
+      "date",
+      "method"
+    ]
+  },
+  "columns": {
+    "sample_id": {
+      "required": true,
+      "aliases": [
+        "試料ID",
+        "サンプルID",
+        "Sample ID",
+        "sample id"
+      ],
+      "type": "string",
+      "unique": true
+    },
+    "material_grade": {
+      "aliases": [
+        "材質",
+        "材料",
+        "合金",
+        "material",
+        "material grade"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "lot_no": {
+      "aliases": [
+        "ロット",
+        "ロット番号",
+        "lot",
+        "lot no"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "solution_temperature": {
+      "required": true,
+      "aliases": [
+        "溶体化温度",
+        "熱処理温度",
+        "solution temperature"
+      ],
+      "unit": "degC",
+      "accepted_units": [
+        "℃",
+        "C",
+        "degC"
+      ],
+      "type": "float",
+      "range": [
+        0,
+        2000
+      ]
+    },
+    "hold_time": {
+      "required": true,
+      "aliases": [
+        "保持時間",
+        "時間",
+        "hold time"
+      ],
+      "unit": "min",
+      "accepted_units": [
+        "min",
+        "分"
+      ],
+      "type": "float",
+      "range": [
+        0,
+        10000
+      ]
+    },
+    "aging_temperature": {
+      "aliases": [
+        "時効温度",
+        "aging temperature"
+      ],
+      "unit": "degC",
+      "accepted_units": [
+        "℃",
+        "C",
+        "degC"
+      ],
+      "type": "float",
+      "nullable": true,
+      "range": [
+        0,
+        2000
+      ]
+    },
+    "cooling_condition": {
+      "aliases": [
+        "冷却条件",
+        "冷却",
+        "cooling condition"
+      ],
+      "type": "string",
+      "nullable": true
+    },
+    "hardness": {
+      "aliases": [
+        "硬さ",
+        "ビッカース硬さ",
+        "hardness"
+      ],
+      "unit": "HV",
+      "accepted_units": [
+        "HV",
+        "Hv"
+      ],
+      "type": "float",
+      "nullable": true,
+      "range": [
+        0,
+        1000
+      ]
+    },
+    "note": {
+      "aliases": [
+        "備考",
+        "メモ",
+        "note"
+      ],
+      "type": "string",
+      "nullable": true
+    }
+  }
+}

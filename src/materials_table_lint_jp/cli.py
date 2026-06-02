@@ -9,7 +9,7 @@ from pathlib import Path
 from . import __version__
 from .analyzer import analyze
 from .reader import read_table
-from .schema import load_schema, write_basic_schema
+from .schema import SCHEMA_TEMPLATES, load_schema, write_schema_template
 from .writer import render_json, render_summary, write_json, write_normalized_csv
 
 
@@ -21,8 +21,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
-    init_parser = subparsers.add_parser("init", help="basic schema JSONを生成します。")
+    init_parser = subparsers.add_parser("init", help="schema JSONを生成します。")
     init_parser.add_argument("--out", type=Path, default=Path("schema.json"))
+    init_parser.add_argument(
+        "--template",
+        choices=sorted(SCHEMA_TEMPLATES),
+        default="basic",
+        help="生成するschema template",
+    )
 
     inspect_parser = subparsers.add_parser("inspect", help="入力表のメタデータと列名を表示します。")
     inspect_parser.add_argument("input", type=Path)
@@ -63,8 +69,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     args = parser.parse_args(argv)
     try:
         if args.command == "init":
-            write_basic_schema(args.out)
-            print(f"Wrote schema: {args.out}")
+            write_schema_template(args.out, args.template)
+            print(f"Wrote schema: {args.out} (template={args.template})")
             return 0
         if args.command == "inspect":
             table = read_table(args.input, sheet=args.sheet)
