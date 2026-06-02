@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import sys
 from collections.abc import Sequence
+from contextlib import suppress
 from pathlib import Path
 
 from . import __version__
@@ -47,7 +49,16 @@ def add_common_table_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--sheet", help=".xlsx入力時のシート名")
 
 
+def configure_cli_output() -> None:
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if callable(reconfigure):
+            with suppress(OSError, ValueError):
+                reconfigure(encoding="utf-8", errors="replace")
+
+
 def main(argv: Sequence[str] | None = None) -> int:
+    configure_cli_output()
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
@@ -78,11 +89,11 @@ def main(argv: Sequence[str] | None = None) -> int:
         schema = load_schema(args.schema)
         table = read_table(args.input, sheet=args.sheet)
         analysis = analyze(table, schema)
-        if args.command == "normalize":
-            write_normalized_csv(args.out, analysis)
         report = analysis.to_report()
         if getattr(args, "report", None):
             write_json(args.report, report)
+        if args.command == "normalize" and analysis.status != "error":
+            write_normalized_csv(args.out, analysis)
         if getattr(args, "json_output", False):
             print(render_json(report), end="")
         else:

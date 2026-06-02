@@ -49,28 +49,34 @@ def read_xlsx(path: Path, sheet: str | None = None) -> Table:
         ) from exc
 
     workbook = load_workbook(path, read_only=True, data_only=True)
-    worksheet = workbook[sheet] if sheet else workbook[workbook.sheetnames[0]]
-    metadata: dict[str, str] = {}
-    header: tuple[str, ...] | None = None
-    rows: list[dict[str, str]] = []
-    for values in worksheet.iter_rows(values_only=True):
-        cells = ["" if value is None else str(value).strip() for value in values]
-        if not any(cells):
-            continue
-        first = cells[0]
-        if first.startswith("#"):
-            key, sep, value = first[1:].partition("=")
-            if sep:
-                metadata[key.strip()] = value.strip()
-            continue
+    try:
+        if sheet and sheet not in workbook.sheetnames:
+            available = ", ".join(workbook.sheetnames)
+            raise ValueError(f"XLSX sheet not found: {sheet}. Available sheets: {available}")
+        worksheet = workbook[sheet] if sheet else workbook[workbook.sheetnames[0]]
+        metadata: dict[str, str] = {}
+        header: tuple[str, ...] | None = None
+        rows: list[dict[str, str]] = []
+        for values in worksheet.iter_rows(values_only=True):
+            cells = ["" if value is None else str(value).strip() for value in values]
+            if not any(cells):
+                continue
+            first = cells[0]
+            if first.startswith("#"):
+                key, sep, value = first[1:].partition("=")
+                if sep:
+                    metadata[key.strip()] = value.strip()
+                continue
+            if header is None:
+                header = tuple(cells)
+                continue
+            row = {
+                column: cells[index] if index < len(cells) else ""
+                for index, column in enumerate(header)
+            }
+            rows.append(row)
         if header is None:
-            header = tuple(cells)
-            continue
-        row = {
-            column: cells[index] if index < len(cells) else ""
-            for index, column in enumerate(header)
-        }
-        rows.append(row)
-    if header is None:
-        raise ValueError("XLSX has no table header")
-    return Table(path=path, metadata=metadata, headers=header, rows=tuple(rows))
+            raise ValueError("XLSX has no table header")
+        return Table(path=path, metadata=metadata, headers=header, rows=tuple(rows))
+    finally:
+        workbook.close()

@@ -13,8 +13,8 @@
 - `# key=value` 形式の先頭メタデータを読み取ります。
 - 日本語・英語・略称の列名を schema alias で標準名に寄せます。
 - `温度[℃]` や `引張強さ[MPa]` のような列名内単位を検査します。
-- 必須列、必須メタデータ、空欄、重複サンプルID、数値変換、範囲外値を報告します。
-- 正規化CSVとJSONレポートを出力します。
+- 必須列、必須メタデータ、空欄、重複サンプルID、重複alias列、数値変換、範囲外値を報告します。
+- JSONレポートを出力し、エラーがない場合は正規化CSVも出力します。
 
 ## Not In Scope
 
@@ -67,6 +67,8 @@ mtlint lint examples/clean.csv --schema examples/basic.schema.json
 mtlint normalize examples/clean.csv --schema examples/basic.schema.json --out normalized.csv --report report.json
 ```
 
+`normalize` はエラーがある入力では正規化CSVを書きません。`--report` を指定している場合は、エラー内容のJSONレポートだけを書きます。
+
 列とメタデータだけ確認:
 
 ```bash
@@ -100,6 +102,7 @@ A-002,540,30,,10.1,再測定予定
 - `UNIT_MISMATCH`
 - `MISSING_VALUE`
 - `DUPLICATE_SAMPLE_ID`
+- `DUPLICATE_MAPPED_COLUMN`
 - `NUMERIC_PARSE_ERROR`
 - `RANGE_VIOLATION`
 - `UNKNOWN_COLUMN`

@@ -54,3 +54,16 @@ def test_read_xlsx_with_openpyxl(tmp_path: Path) -> None:
     assert table.metadata == {"project": "Demo"}
     assert table.headers == ("試料ID", "温度[℃]")
     assert table.rows[0]["温度[℃]"] == "500"
+
+
+def test_read_xlsx_missing_sheet_has_clear_message(tmp_path: Path) -> None:
+    pytest.importorskip("openpyxl")
+    from openpyxl import Workbook
+
+    path = tmp_path / "data.xlsx"
+    workbook = Workbook()
+    workbook.active.title = "Data"
+    workbook.save(path)
+
+    with pytest.raises(ValueError, match="XLSX sheet not found: Missing"):
+        read_table(path, sheet="Missing")

@@ -96,3 +96,25 @@ def test_numeric_parse_error(tmp_path: Path) -> None:
     analysis = analyze(read_table(data), load_schema(write_schema(tmp_path)))
 
     assert any(issue.code == "NUMERIC_PARSE_ERROR" for issue in analysis.issues)
+
+
+def test_duplicate_mapped_column_is_error(tmp_path: Path) -> None:
+    data = tmp_path / "data.csv"
+    data.write_text(
+        "\n".join(
+            [
+                "# project=Demo",
+                "# operator=Tanaka",
+                "# date=2026-06-01",
+                "試料ID,サンプルID,温度[℃]",
+                "A-001,B-001,500",
+            ]
+        ),
+        encoding="utf-8",
+    )
+
+    analysis = analyze(read_table(data), load_schema(write_schema(tmp_path)))
+
+    assert any(issue.code == "DUPLICATE_MAPPED_COLUMN" for issue in analysis.issues)
+    assert analysis.status == "error"
+    assert analysis.normalized_rows[0]["sample_id"] == "A-001"

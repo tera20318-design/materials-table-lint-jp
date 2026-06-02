@@ -47,6 +47,21 @@ def match_columns(analysis: Analysis) -> None:
         matched_rule = alias_map.get(normalize_label(label))
         if matched_rule is None:
             continue
+        if matched_rule.name in analysis.matches:
+            existing = analysis.matches[matched_rule.name]
+            analysis.issues.append(
+                Issue(
+                    code="DUPLICATE_MAPPED_COLUMN",
+                    severity=Severity.ERROR,
+                    message=(
+                        f"Columns '{existing.source}' and '{source}' both map to "
+                        f"schema column: {matched_rule.name}"
+                    ),
+                    column=matched_rule.name,
+                    value=source,
+                )
+            )
+            continue
         analysis.matches[matched_rule.name] = ColumnMatch(
             source=source,
             normalized=matched_rule.name,
@@ -96,7 +111,12 @@ def check_metadata(analysis: Analysis) -> None:
 
 
 def check_unknown_columns(analysis: Analysis) -> None:
-    known_sources = {match.source for match in analysis.matches.values()}
+    duplicate_sources = {
+        issue.value
+        for issue in analysis.issues
+        if issue.code == "DUPLICATE_MAPPED_COLUMN" and issue.value
+    }
+    known_sources = {match.source for match in analysis.matches.values()} | duplicate_sources
     for header in analysis.table.headers:
         if header not in known_sources:
             analysis.issues.append(
