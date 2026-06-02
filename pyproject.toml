@@ -46,6 +46,8 @@ Repository = "https://github.com/tera20318-design/materials-table-lint-jp"
 Issues = "https://github.com/tera20318-design/materials-table-lint-jp/issues"
 Changelog = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/CHANGELOG.md"
 Security = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/SECURITY.md"
+"Code of Conduct" = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/CODE_OF_CONDUCT.md"
+"Governance" = "https://github.com/tera20318-design/materials-table-lint-jp/blob/main/GOVERNANCE.md"
 "Release Notes" = "https://github.com/tera20318-design/materials-table-lint-jp/tree/main/docs"
 
 [project.scripts]

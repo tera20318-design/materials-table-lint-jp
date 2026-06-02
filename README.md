@@ -161,6 +161,8 @@ python -m twine check dist/*
 
 Codex/API credits を使う場合の保守計画は [docs/codex-maintenance-plan.md](docs/codex-maintenance-plan.md) にまとめています。これは実行時機能ではなく、OSSメンテナンス用途の説明です。
 
+貢献方針は [CONTRIBUTING.md](CONTRIBUTING.md)、保守判断は [GOVERNANCE.md](GOVERNANCE.md)、行動規範は [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) を参照してください。
+
 ## License
 
 MIT License. See [LICENSE](LICENSE).

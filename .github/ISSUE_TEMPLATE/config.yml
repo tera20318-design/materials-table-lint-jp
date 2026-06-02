@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Security and private data
+    url: https://github.com/tera20318-design/materials-table-lint-jp/blob/main/SECURITY.md
+    about: Do not post real experiment data, customer names, lot numbers, or internal codes publicly.

@@ -31,3 +31,13 @@ python -m twine check dist/*
 
 Only use synthetic data in examples and tests. Do not include customer names,
 real lot numbers, internal material codes, or unpublished experiment results.
+
+## Pull Requests
+
+Before opening a pull request:
+
+- Keep the change small enough to review.
+- Add or update tests for behavior changes.
+- Update README or docs only for behavior that works locally.
+- Use the pull request checklist in `.github/PULL_REQUEST_TEMPLATE.md`.
+- Read [GOVERNANCE.md](GOVERNANCE.md) for project scope and release expectations.

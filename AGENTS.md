@@ -23,6 +23,8 @@ tool. Keep the scope narrow and practical.
 - `examples/`: sample CSV, schema, normalized output, and reports.
 - `docs/`: roadmap, release notes, application draft, and review notes.
 - `.github/`: CI and issue templates.
+- `GOVERNANCE.md`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, and `SECURITY.md`:
+  public project operations and safety policies.
 
 ## Implementation Policy
 
@@ -96,6 +98,7 @@ README must include:
   codes in tests or examples.
 - Warn users to review normalized outputs before sharing.
 - If future auto-fix behavior is added, it must be explicit and opt-in.
+- Keep public issue and pull request templates focused on synthetic examples and privacy checks.
 
 ## Do Not
 
