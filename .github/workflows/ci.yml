@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python-version: ["3.11", "3.12"]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install package and dev dependencies
+        run: python -m pip install -e ".[dev,xlsx]"
+      - name: Format check
+        run: ruff format --check .
+      - name: Lint
+        run: ruff check .
+      - name: Typecheck
+        run: mypy src tests
+      - name: Test
+        run: pytest
+      - name: CLI smoke
+        run: |
+          mtlint --version
+          mtlint lint examples/clean.csv --schema examples/basic.schema.json
+          mtlint normalize examples/clean.csv --schema examples/basic.schema.json --out normalized.csv --report report.json
+      - name: Build
+        run: python -m build
+      - name: Check package metadata
+        run: python -m twine check dist/*
