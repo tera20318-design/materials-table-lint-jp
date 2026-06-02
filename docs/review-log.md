@@ -19,3 +19,11 @@ This was chosen because it is more directly useful for materials-technology work
 - Keep `.xlsx` optional.
 - Avoid OCR, PDF extraction, LLM extraction, ELN/LIMS replacement, and regulated QA claims.
 - Use only synthetic example data.
+
+### Pre-Application Fixes
+
+- Fixed Windows CLI output so Japanese column names do not fail on non-UTF-8 consoles.
+- Added an error for duplicate input columns that map to the same schema column.
+- Made missing `.xlsx` sheets return a clear CLI error.
+- Made `normalize` skip normalized CSV output when the analysis has errors; JSON reports can still be written.
+- Verified GitHub Actions CI on Ubuntu and Windows with Python 3.11 and 3.12.
