@@ -1,0 +1,15 @@
+/.venv/
+/build/
+/dist/
+/*.egg-info/
+/src/*.egg-info/
+/.pytest_cache/
+/.mypy_cache/
+/.ruff_cache/
+__pycache__/
+*.py[cod]
+*.log
+*.tmp
+normalized.csv
+report.json
+schema.tmp.json

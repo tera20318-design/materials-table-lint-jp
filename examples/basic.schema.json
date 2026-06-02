@@ -1,0 +1,92 @@
+{
+  "version": 1,
+  "metadata": {
+    "required": [
+      "project",
+      "operator",
+      "date"
+    ]
+  },
+  "columns": {
+    "sample_id": {
+      "required": true,
+      "aliases": [
+        "試料ID",
+        "サンプルID",
+        "Sample ID",
+        "sample id"
+      ],
+      "type": "string",
+      "unique": true
+    },
+    "temperature": {
+      "required": true,
+      "aliases": [
+        "温度",
+        "熱処理温度",
+        "temperature"
+      ],
+      "unit": "degC",
+      "accepted_units": [
+        "℃",
+        "C",
+        "degC"
+      ],
+      "type": "float",
+      "range": [
+        0,
+        2000
+      ]
+    },
+    "hold_time": {
+      "aliases": [
+        "保持時間",
+        "時間",
+        "hold time"
+      ],
+      "unit": "min",
+      "accepted_units": [
+        "min",
+        "分"
+      ],
+      "type": "float",
+      "nullable": true
+    },
+    "tensile_strength": {
+      "aliases": [
+        "引張強さ",
+        "引張強度",
+        "tensile strength"
+      ],
+      "unit": "MPa",
+      "accepted_units": [
+        "MPa"
+      ],
+      "type": "float",
+      "nullable": true
+    },
+    "elongation": {
+      "aliases": [
+        "破断伸び",
+        "伸び",
+        "elongation"
+      ],
+      "unit": "percent",
+      "accepted_units": [
+        "%",
+        "percent"
+      ],
+      "type": "float",
+      "nullable": true
+    },
+    "note": {
+      "aliases": [
+        "備考",
+        "メモ",
+        "note"
+      ],
+      "type": "string",
+      "nullable": true
+    }
+  }
+}
