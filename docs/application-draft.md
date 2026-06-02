@@ -2,9 +2,9 @@
 
 ## English Application Text
 
-materials-table-lint-jp is a new OSS Python CLI for Japanese materials experiment tables. v0.1.0 checks CSV/XLSX files against explicit schemas for aliases, units, metadata, missing values, duplicate sample IDs, duplicate mapped columns, numeric parsing, and simple ranges. It writes JSON reports and normalized CSV when checks pass. The repo includes examples, tests, GitHub Actions CI, docs, and release notes. It has no adoption metrics yet.
+materials-table-lint-jp is a new OSS Python CLI for Japanese materials experiment tables. v0.1.0 checks simple tabular CSV/XLSX files against explicit schemas for aliases, units, metadata, missing values, duplicate sample IDs, duplicate mapped columns, numeric parsing, and simple ranges. It writes JSON reports and normalized CSV when checks pass. The repo includes examples, tests, GitHub Actions CI, docs, and release notes. It has no adoption metrics yet.
 
-Character count: 444
+Character count: 459
 
 ## Japanese Intent Note
 
